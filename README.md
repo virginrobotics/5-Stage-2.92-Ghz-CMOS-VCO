@@ -1,4 +1,4 @@
-# 5 stage 2.92 
+# 5 stage 2.92 GHz CMOS Voltage Controlled Oscillator
 Documenting the design process of a VCO on the SYNOPSYS Custom Compiler - 28nm PDK.
 
 ### About
