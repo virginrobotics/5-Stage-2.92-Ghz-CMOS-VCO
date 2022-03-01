@@ -56,3 +56,18 @@ Here's the output for control voltage @ 1.8V and Vdd @ 1.8V. Osciallations ~ 140
 A Vin vs Freq curve for a sweep from 0.4V to 1.8V. The measured VCO gain is ~ 125.27Mhz/V
 
 ![](images/vcolinear.png)
+
+<h3> Fingering </h3>
+
+The Synopsys Custom Compiler didn't allow mosfet node lengths to exceed 3.5um but the design required lengths of 4.8um , 96um etc.
+
+![image](https://user-images.githubusercontent.com/58078131/156202615-750fa222-bd16-4c8c-a23f-765e92403bb6.png)
+
+The solution is to realize the required lengths through multiple fingers , example - to realize a 96um pmos, you create 40 fingers with 2.4um per finger to achieve desired size. 
+However, there are penalties in the form of gate resistance , which can be reduced by employing parallel fingers but perimeter source/drain capacitance increases with more fingers. A common convention is to choose a finger width whose resistance is less than the inverse transconductance (gm) associated with the finger. 
+
+![image](https://user-images.githubusercontent.com/58078131/156204059-c37d1023-fda7-49b0-9f44-494a2a7d6a55.png)
+Page - 737, Design of Analog CMOS Integrated Circuits - Behzad Razavi
+
+
+
