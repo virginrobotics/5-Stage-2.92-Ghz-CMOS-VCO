@@ -9,17 +9,16 @@ Voltage Controlled Oscillators , as the name suggests allow you to linearly tune
 
 <h2> Navigation: </h2>
 
-1. [How does a VCO work ?](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#-a-416-decoder-)
-2. [Initial design](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#not-gate-submodule)
-3. [Tools ](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#and-gate-submodule)
-4. [Fingering](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#24-decoder-submodule)
-5. [Reference VCO Perfomance](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#realizing-the-416-decoder-using-24-submodules)
-6. [Tweaks](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#important-mistakes)
-7. [Parametric Sweep](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#recreate-simulation-output)
-8. [Final Results](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#eda-tools-used)
-9. [Improvements](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#things-to-improve)
-10. [Thanks to](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice#thanks-to)
-11. [References](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice/blob/main/README.md#references)
+1. [Introduction](#Introduction)
+2. [Initial design](#Initial-Design)
+3. [Tools ](#Tools)
+4. [Fingering](#Fingering)
+5. [Reference-VCO-Perfomance](#Reference VCO perfomance)
+6. [Parametric Sweep](#Parametric-sweep)
+7. [Final Conclusion](#Final-Conclusion)
+8. [Thanks to](#Thanks-to)
+9. [References](#References)
+
 
 <hr></hr>
 
@@ -29,6 +28,10 @@ The VCO is made up of a 5 stage ring oscillator where the output of the final in
 
 ![](https://latex.codecogs.com/png.image?\dpi{110}%20f_{osc}%20=%20\frac{I_{D}}{N.C_{tot}.V_{DD}})
 
+where, fosc os frequency of oscillation
+Id is bias current 
+N is the number of inverter stages
+and Ctot is the total input/output capacitance of the inverter stage
 
 
 # Initial Design
@@ -60,6 +63,16 @@ Here's the output for control voltage @ 1.8V and Vdd @ 1.8V. Osciallations ~ 140
 A Vin vs Freq curve for a sweep from 0.4V to 1.8V. The measured VCO gain is ~ 125.27Mhz/V
 
 ![](images/vcolinear.png)
+
+#Tools
+
+The hackathon was unique as it had the participants use Synopsys's Custom Compiler Tool through a remote connection to it's servers in Singapore. The Custom Compiler itself was vast in it's capabilities especially in the testbench environment through options for Monte Carlo analysis ,Corner analysis , vide range of waveform measurements - frequency , mean , peak to peak amplitude measurements etc. 
+
+Was the first experience with a commerical tool and thoroughly enjoyed the process and the documentation resources were excellent. 
+
+![image](https://user-images.githubusercontent.com/58078131/156224671-3f01bdd0-c77a-44a6-b981-3b71935c1e69.png)
+
+![image](https://user-images.githubusercontent.com/58078131/156225044-91a741ed-c35d-4ec1-883d-b84ebf1626e2.png)
 
 # Fingering
 
