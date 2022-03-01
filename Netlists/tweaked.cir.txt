@@ -1,0 +1,78 @@
+*  Generated for: PrimeSim
+*  Design library name: vco_v3
+*  Design cell name: vco_v3
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+.param resist=11k vctr=1.6
+*Custom Compiler Version S-2021.09
+*Tue Mar  1 17:51:28 2022
+
+.global gnd! vdd!
+********************************************************************************
+* Library          : vco_v3
+* Cell             : vco_v3
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+v5 net52 gnd! dc=1.8
+xm8 net21 net22 net52 vdd! p105 w=0.2u l=30n nf=2 m=1
+xm1 net50 net50 net52 vdd! p105 w=3.5u l=30n nf=1 m=1
+xm2 net27 net50 net52 vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm3 net37 net50 net52 vdd! p105 w=0.1u l=30n nf=1 m=1
+xm4 net34 net50 net52 vdd! p105 w=0.1u l=30n nf=1 m=1
+xm5 net31 net50 net52 vdd! p105 w=0.2u l=30n nf=2 m=1
+xm6 net28 net50 net52 vdd! p105 w=0.2u l=30n nf=2 m=1
+xm7 net23 net50 net52 vdd! p105 w=0.2u l=30n nf=2 m=1
+xm9 vout net21 net52 vdd! p105 w=0.2u l=30n nf=2 m=1
+xm10 net22 net26 net23 vdd! p105 w=0.2u l=60n nf=1 m=1
+xm11 net26 net30 net28 vdd! p105 w=0.2u l=60n nf=1 m=1
+xm12 net30 net33 net31 vdd! p105 w=0.2u l=60n nf=1 m=1
+xm13 net33 net36 net34 vdd! p105 w=0.2u l=60n nf=1 m=1
+xm14 net36 net22 net37 vdd! p105 w=0.2u l=60n nf=1 m=1
+xm15 net22 net26 net24 gnd! n105 w=0.1u l=30n nf=1 m=1
+xm16 net26 net30 net29 gnd! n105 w=0.1u l=30n nf=1 m=1
+xm17 net30 net33 net32 gnd! n105 w=0.1u l=30n nf=1 m=1
+xm18 net33 net36 net35 gnd! n105 w=0.1u l=30n nf=1 m=1
+xm19 net36 net22 net38 gnd! n105 w=0.1u l=30n nf=1 m=1
+xm20 net24 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm21 net29 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm22 net32 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm23 net35 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm24 net38 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm25 net27 net27 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm26 net50 vctrl net39 gnd! n105 w=0.14000m l=30n nf=40 m=1
+xm27 net21 net22 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+xm28 vout net21 gnd! gnd! n105 w=0.1u l=30n nf=1 m=1
+r11 vout gnd! r=1k
+r29 net39 gnd! r='resist'
+v17 vctrl gnd! dc=0 exp ( 0 'vctr' 5n 0 )
+
+
+
+
+
+
+
+
+.tran '10n' '300n' name=tran
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(vctr) v(vout)
+
+.temp 25
+
+
+
+.option primesim_output=wdf
+
+
+.option parhier = LOCAL
+
+
+
+
+
+
+.end

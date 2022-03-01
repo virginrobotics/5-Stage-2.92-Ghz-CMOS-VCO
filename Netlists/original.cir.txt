@@ -1,0 +1,89 @@
+*  Generated for: PrimeSim
+*  Design library name: vco_v2
+*  Design cell name: tb2_vco_v2
+*  Design view name: schematic
+.lib 'saed32nm.lib' TT
+
+*Custom Compiler Version S-2021.09
+*Tue Mar  1 17:54:13 2022
+
+.global gnd! vdd!
+********************************************************************************
+* Library          : vco_v2
+* Cell             : vco_v2
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+.subckt vco_v2 gnd_1 vctrl vdd vout vt_bulk_n_gnd! vt_bulk_p_vdd!
+xm14 net58 net84 net43 vt_bulk_p_vdd! p105 w=4.8u l=0.54u nf=2 m=1
+xm13 net55 net58 net40 vt_bulk_p_vdd! p105 w=4.8u l=0.54u nf=2 m=1
+xm12 net52 net55 net37 vt_bulk_p_vdd! p105 w=4.8u l=0.54u nf=2 m=1
+xm11 net49 net52 net34 vt_bulk_p_vdd! p105 w=4.8u l=0.54u nf=2 m=1
+xm10 net84 net49 net31 vt_bulk_p_vdd! p105 w=4.8u l=0.54u nf=2 m=1
+xm9 vout net87 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.18u nf=2 m=1
+xm7 net31 net79 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm6 net34 net79 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm5 net37 net79 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm4 net40 net79 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm3 net43 net79 vdd vt_bulk_p_vdd! p105 w=3.5u l=0.26u nf=1 m=1
+xm2 net76 net79 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.36u nf=2 m=1
+xm1 net79 net79 vdd vt_bulk_p_vdd! p105 w=2.4u l=0.36u nf=1 m=1
+xm8 net87 net84 vdd vt_bulk_p_vdd! p105 w=4.8u l=0.18u nf=2 m=1
+xm28 vout net87 gnd_1 vt_bulk_n_gnd! n105 w=1.2u l=0.18u nf=1 m=1
+xm27 net87 net84 gnd_1 vt_bulk_n_gnd! n105 w=1.2u l=0.18u nf=1 m=1
+xm26 net79 vctrl net89 vt_bulk_n_gnd! n105 w=96u l=0.9u nf=40 m=1
+xm25 net76 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm24 net73 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm23 net70 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm22 net67 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm21 net64 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm20 net61 net76 gnd_1 vt_bulk_n_gnd! n105 w=0.96u l=0.36u nf=1 m=1
+xm19 net58 net84 net73 vt_bulk_n_gnd! n105 w=2.4u l=0.54u nf=1 m=1
+xm18 net55 net58 net70 vt_bulk_n_gnd! n105 w=2.4u l=0.54u nf=1 m=1
+xm17 net52 net55 net67 vt_bulk_n_gnd! n105 w=2.4u l=0.54u nf=1 m=1
+xm16 net49 net52 net64 vt_bulk_n_gnd! n105 w=2.4u l=0.54u nf=1 m=1
+xm15 net84 net49 net61 vt_bulk_n_gnd! n105 w=2.4u l=0.54u nf=1 m=1
+r29 net89 gnd_1 r=40.05k
+.ends vco_v2
+
+********************************************************************************
+* Library          : vco_v2
+* Cell             : tb2_vco_v2
+* View             : schematic
+* View Search List : hspice hspiceD schematic spice veriloga
+* View Stop List   : hspice hspiceD
+********************************************************************************
+xi0 gnd! vctrl net8 vout gnd! vdd! vco_v2
+v27 vctrl gnd! dc=0.6
+v2 net8 gnd! dc='vin_2'
+r7 vout gnd! r=1k
+
+
+
+
+
+
+
+
+.tran '20n' '300n' name=tran
+
+.option primesim_remove_probe_prefix = 0
+.probe v(*) i(*) level=1
+.probe tran v(vout)
+
+.temp 25
+
+
+
+.option primesim_output=wdf
+
+
+.option parhier = LOCAL
+
+
+
+
+
+
+.end
