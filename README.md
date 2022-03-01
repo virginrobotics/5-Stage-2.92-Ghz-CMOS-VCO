@@ -3,7 +3,7 @@ Documenting the design process of a VCO on the SYNOPSYS Custom Compiler - 28nm P
 
 ### About
 Following the [4:16 bottom up decoder](https://github.com/virginrobotics/bottomupdecoder_esim_ngspice), I got the oppurtunity compete in another hackathon - the Analog IC Design Hackathon SYNOPSYS IITH (VSD organized) , and the logical step was to design an analog circuit , hence the VCO. 
-Voltage Controlled Oscillators , as the name suggests allow you to linearly tune the output frequency of an oscillator through a control voltage over a frequency range. VCOs are an integral component of PLL(Phase Locked Loop) systems. Most design challanges come in the form of choosing right w/l ratios, biasing, lowering Vdd/Vctrl and power. The VCO designed here was referenced from this [paper](https://www.researchgate.net/publication/333347988_Design_and_Analysis_of_Current_Starved_VCO_Targeting_SCL_180_nm_CMOS_Process), a few tweaks allowed a max output of 2.92 GHz.    
+Voltage Controlled Oscillators , as the name suggests allow you to linearly tune the output frequency of an oscillator through a control voltage over a frequency range. VCOs are an integral component of PLL(Phase Locked Loop) systems. Most design challanges come in the form of choosing right w/l ratios, biasing, lowering Vdd/Vctrl and power. The VCO designed here was referenced from this [paper](https://www.researchgate.net/publication/333347988_Design_and_Analysis_of_Current_Starved_VCO_Targeting_SCL_180_nm_CMOS_Process), a few tweaks allowed a max output of 2.92 GHz albeit with very low amplitude.     
 
 ![](images/vcolinear.png)
 
@@ -13,11 +13,12 @@ Voltage Controlled Oscillators , as the name suggests allow you to linearly tune
 2. [Initial design](#Initial-Design)
 3. [Tools ](#Tools)
 4. [Fingering](#Fingering)
-5. [Reference-VCO-Perfomance](#Reference VCO perfomance)
+5. [Reference-VCO-Perfomance](#Reference-VCO-perfomance)
 6. [Parametric Sweep](#Parametric-sweep)
-7. [Final Conclusion](#Final-Conclusion)
-8. [Thanks to](#Thanks-to)
-9. [References](#References)
+7. [Power](#Power-Consumption)
+8. [Final Conclusion](#Final-Conclusion)
+9. [Thanks to](#Thanks-to)
+10. [References](#References)
 
 
 <hr></hr>
@@ -111,6 +112,30 @@ Tabular Data
 ![image](https://user-images.githubusercontent.com/58078131/156211432-a1c447bc-25f9-44dd-96d2-1641f5d85e77.png)
 
 Output @ R1 = 11.1k Ohms , Vdd @ 1.8V and Vctrl @ 1.6V
+
+# Power Consumption
+
+The power calculations might be the sketchiest part of this project but following a thread in the hackathon forum I did this. 
+
+- Plotted the Currents from the sources. took their averages
+- Multiplied averages with their respective Vdd
+- Added the values and took the mean
+
+Here's what I ended up with 
+
+Parametric sweep of currents
+
+![image](https://user-images.githubusercontent.com/58078131/156226186-42501174-cdd4-47b2-a05c-26a5d3d2c5aa.png)
+
+Control and Vdd currents
+
+![image](https://user-images.githubusercontent.com/58078131/156226271-b37ed597-45e8-4994-8d20-918b7b749601.png)
+
+Mean power ~ 0.794 mW @ Vdd = 1.8V, Vctrl = 0.9V and 78MHz. Need more verification. 
+
+![image](https://user-images.githubusercontent.com/58078131/156226324-88015d4d-e5b3-4f62-9bc0-04a5f8725ed2.png)
+
+
 
 # Final Conclusion
 
