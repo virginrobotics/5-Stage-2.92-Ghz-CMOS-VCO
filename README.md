@@ -25,3 +25,6 @@ Voltage Controlled Oscillators , as the name suggests allow you to linearly tune
 
 <h3> How does a VCO work ? </h3>
 
+The VCO is made up of a 5 stage ring oscillator where the output of the final inverter stage is fed back to the input of the first inverter stage where the frequency of oscillation is given by the equation. 
+
+```****f_{osc} = \frac{I_{dd}}{N.C_{tot}.V_{dd}}****```
